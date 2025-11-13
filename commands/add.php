@@ -2,8 +2,6 @@
 function addCommand(array $arguments)
 {
 	$title = array_shift($arguments);
-	$fileName = date('Y-m-d') . '.txt';
-	$filePath = __DIR__ . '/data/' . $fileName;
 	$todo = [
 		'id' => uniqid(),
 		'title' => $title,
@@ -13,19 +11,10 @@ function addCommand(array $arguments)
 		'completed_at' =>null,
 	];
 
-	if (file_exists($filePath))
-	{
-		$content = file_get_contents($filePath);
-		$todos = unserialize($content,
-			['allowed_classes' => false,
-			]);
-		$todos[] = $todo;
-		file_put_contents($filePath, serialize($todos));
-	}
-	else
-	{
-		$todos = [$todo];
-		file_put_contents($filePath, serialize($todos));
-	}
+	$todos = getTodos();
+	$todos[] = $todo;
+
+	storeTodos($todos);
+
 
 }

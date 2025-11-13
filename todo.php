@@ -1,9 +1,5 @@
 <?php
-require_once __DIR__ . '/commands/add.php';
-require_once __DIR__ . '/commands/list.php';
-require_once __DIR__ . '/commands/done.php';
-require_once __DIR__ . '/commands/undone.php';
-require_once __DIR__ . '/commands/remove.php';
+
 // php todo.php list
 // php todo.php list 2022-10-12
 // php todo.php list yesterday
@@ -13,7 +9,7 @@ require_once __DIR__ . '/commands/remove.php';
 // php todo.php undone 1 2
 // php todo.php remove 2 (rm)
 
-
+require_once __DIR__ . '/boot.php';
 
 function main(array $arguments): void
 {
